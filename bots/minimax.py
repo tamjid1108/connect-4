@@ -3,7 +3,7 @@ import math
 from bots.evaluation import Evaluation
 
 class MiniMaxBot(Evaluation):
-	def __init__(self, piece, depth=5):
+	def __init__(self, piece, depth=7):
 		super().__init__(piece)
 		self.depth = depth
 

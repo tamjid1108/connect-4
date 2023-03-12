@@ -53,10 +53,6 @@ class MonteCarloBot():
         win_ratio = lambda x: x.wins/x.visits
         sorted_children = sorted(rootnode.children, key = win_ratio)[::-1]
 
-        #for node in sorted_children:
-        #    print('Move: %s Win Rate: %.2f%%' % (node.move + 1, 100 * node.wins / node.visits))
-        #print('Simulations performed: %s\n' % i)
-
         return rootnode, sorted_children[0].move
 
     def get_child_node(self, node, board, move, piece):

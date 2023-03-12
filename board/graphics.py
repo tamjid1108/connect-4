@@ -25,6 +25,11 @@ class GBoard:
 
     def update_gboard(self):
         pygame.display.update()
+
+    def mark_win(self, board):
+        for r, c in board.win_position:
+            pygame.draw.circle(self.screen, self.WHITE, (int(c*self.SQUARESIZE+self.SQUARESIZE/2), \
+            self.height-int(r*self.SQUARESIZE+self.SQUARESIZE/2)), self.RADIUS, 5)
     
     def draw_gboard(self, board):
         for c in range(board.COLUMN_COUNT):
@@ -42,10 +47,10 @@ class GBoard:
                 elif board.get_row_col(r, c) == 2: 
                     pygame.draw.circle(self.screen, self.YELLOW, (int(c*self.SQUARESIZE+self.SQUARESIZE/2), \
                         self.height-int(r*self.SQUARESIZE+self.SQUARESIZE/2)), self.RADIUS)
+                
                 if r==board.last_move[0] and c==board.last_move[1]:
                     pygame.draw.circle(self.screen, self.WHITE, (int(c*self.SQUARESIZE+self.SQUARESIZE/2), \
-                        self.height-int(r*self.SQUARESIZE+self.SQUARESIZE/2)), self.RADIUS, 7)
-                    
+                        self.height-int(r*self.SQUARESIZE+self.SQUARESIZE/2)), self.RADIUS, 5)
                 
 
         self.update_gboard()

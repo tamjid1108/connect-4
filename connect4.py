@@ -39,7 +39,9 @@ def check_win(piece):
 	if board.winning_move(piece):
 		if graphics:
 			gb.write_on_board("PLAYER " + str(piece) + " WINS!", PLAYER_COLOUR[piece - 1], 350, 50, 70, True)
+			gb.mark_win(board)
 			gb.update_gboard()
+			
 		print("\nPLAYER " + str(piece) + " WINS!")
 		return True
 	
