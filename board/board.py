@@ -19,6 +19,7 @@ class Board:
         self.board = np.zeros((self.ROW_COUNT, self.COLUMN_COUNT), dtype=int)
         self.num_slots_filled = 0
         self.last_move = (-1,-1)
+        self.win_position = []
         self.CURR_PLAYER = current_player
         self.PREV_PLAYER = self.get_opp_player(current_player)
 
@@ -63,24 +64,28 @@ class Board:
         for c in range(self.COLUMN_COUNT-3):
             for r in range(self.ROW_COUNT):
                 if self.board[r][c] == piece and self.board[r][c+1] == piece and self.board[r][c+2] == piece and self.board[r][c+3] == piece:
+                    self.win_position = list([(r,c), (r,c+1), (r,c+2), (r,c+3)])
                     return True
 
         # Check vertical locations for win
         for c in range(self.COLUMN_COUNT):
             for r in range(self.ROW_COUNT-3):
                 if self.board[r][c] == piece and self.board[r+1][c] == piece and self.board[r+2][c] == piece and self.board[r+3][c] == piece:
+                    self.win_position = list([(r,c), (r+1,c), (r+2,c), (r+3,c)])
                     return True
 
         # Check positively sloped diaganols
         for c in range(self.COLUMN_COUNT-3):
             for r in range(self.ROW_COUNT-3):
                 if self.board[r][c] == piece and self.board[r+1][c+1] == piece and self.board[r+2][c+2] == piece and self.board[r+3][c+3] == piece:
+                    self.win_position = list([(r,c), (r+1,c+1), (r+2,c+2), (r+3,c+3)])
                     return True
 
         # Check negatively sloped diaganols
         for c in range(self.COLUMN_COUNT-3):
             for r in range(3, self.ROW_COUNT):
                 if self.board[r][c] == piece and self.board[r-1][c+1] == piece and self.board[r-2][c+2] == piece and self.board[r-3][c+3] == piece:
+                    self.win_position = list([(r,c), (r-1,c+1), (r-2,c+2), (r-3,c+3)])
                     return True
 
     def get_valid_locations(self):
