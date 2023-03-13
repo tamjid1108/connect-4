@@ -6,17 +6,17 @@ import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 
 import pygame
-from bots import *
-from board import *
+import bots
+from board import Board, GBoard
 from connect4 import connect4
 
 bot_map = {
-    'human': Human,
-    'random': RandomBot,
-    'onestep': OneStepLookAheadBot,
-    'minimax': MiniMaxBot,
-    'expectimax': ExpectiMaxBot,
-    'montecarlo': MonteCarloBot
+    'human': bots.Human,
+    'random': bots.RandomBot,
+    'onestep': bots.OneStepLookAheadBot,
+    'minimax': bots.MiniMaxBot,
+    'expectimax': bots.ExpectiMaxBot,
+    'montecarlo': bots.MonteCarloBot
 }
 
 name_map = {
@@ -75,7 +75,7 @@ def main(first_player = None, second_player = None):
 
     if args.p1 is None or args.p1 == "human":
         print("Player 1 is set as a Human")
-        p1 = Human(Board.PLAYER1_PIECE)
+        p1 = bots.Human(Board.PLAYER1_PIECE)
     else:
         for bot in bot_map:
             if bot == args.p1:
@@ -87,7 +87,7 @@ def main(first_player = None, second_player = None):
 
     if args.p2 is None or args.p2 == "human":
         print("Player 2 is set as a Human")
-        p2 = Human(Board.PLAYER2_PIECE)
+        p2 = bots.Human(Board.PLAYER2_PIECE)
     else:
         for bot in bot_map:
             if bot == args.p2:
