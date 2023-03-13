@@ -78,7 +78,7 @@ def connect4(p1, p2, ui=True):
 		# Player1's Input
 		start = time.perf_counter()
 		if turn == board.PLAYER1_PIECE and not game_over:
-			playerMove(p1, board.PLAYER1_PIECE)
+			player_move(p1, board.PLAYER1_PIECE)
 			next_turn()
 			moves_count_p1 += 1
 			game_over = check_win(board.PLAYER1_PIECE)
@@ -89,7 +89,7 @@ def connect4(p1, p2, ui=True):
 		# Player2's Input
 		start = time.perf_counter()
 		if turn == board.PLAYER2_PIECE and not game_over:
-			playerMove(p2, board.PLAYER2_PIECE)
+			player_move(p2, board.PLAYER2_PIECE)
 			next_turn()
 			game_over = check_win(board.PLAYER2_PIECE)
 		end = time.perf_counter()
