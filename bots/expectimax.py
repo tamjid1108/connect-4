@@ -7,7 +7,7 @@ class ExpectiMaxBot(Evaluation):
 		super().__init__(piece)
 		self.depth = depth
 
-	def expectimax(self, board, depth, maximizingPlayer):
+	def expectimax(self, board, depth, maximizing_player):
 		valid_locations = board.get_valid_locations()
 		is_terminal = super().is_terminal_node(board)
 
@@ -22,7 +22,7 @@ class ExpectiMaxBot(Evaluation):
 			else: # Depth is zero
 				return (None, super().score_position(board))
 
-		if maximizingPlayer: # (maximizing node)
+		if maximizing_player: # (maximizing node)
 			value = -math.inf
 			column = random.choice(valid_locations)
 			for col in valid_locations:
