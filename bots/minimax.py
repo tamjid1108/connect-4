@@ -7,7 +7,7 @@ class MiniMaxBot(Evaluation):
 		super().__init__(piece)
 		self.depth = depth
 
-	def minimax(self, board, depth, alpha, beta, maximizingPlayer):
+	def minimax(self, board, depth, alpha, beta, maximizing_player):
 		valid_locations = board.get_valid_locations()
 		is_terminal = super().is_terminal_node(board)
 
@@ -22,7 +22,7 @@ class MiniMaxBot(Evaluation):
 			else: # Depth is zero
 				return (None, super().score_position(board))
 
-		if maximizingPlayer:
+		if maximizing_player:
 			value = -math.inf
 			column = random.choice(valid_locations)
 			for col in valid_locations:
