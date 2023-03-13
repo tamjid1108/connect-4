@@ -52,15 +52,21 @@ def check_win(piece):
 		return True
 	return False
 
+
+def playerMove(p, piece):
+	col = p.get_move(board)
+	if board.is_valid_location(col):
+		board.drop_piece(col, piece)
+		
+		
+
 def connect4(p1, p2, ui=True):
 	global game_over, board, gb, graphics
-
-	graphics=ui
 
 	board = Board(turn)
 	board.print_board()
 
-	if graphics:
+	if ui:
 		gb = GBoard(board)
 		gb.draw_gboard(board)
 		gb.update_gboard()
@@ -72,13 +78,10 @@ def connect4(p1, p2, ui=True):
 		# Player1's Input
 		start = time.perf_counter()
 		if turn == board.PLAYER1_PIECE and not game_over:
-			col = p1.get_move(board)
-
-			if board.is_valid_location(col):
-				board.drop_piece(col, board.PLAYER1_PIECE)
-				moves_count_p1 += 1
-				next_turn()
-				game_over = check_win(board.PLAYER1_PIECE)
+			playerMove(p1, board.PLAYER1_PIECE)
+			next_turn()
+			moves_count_p1 += 1
+			game_over = check_win(board.PLAYER1_PIECE)
 		end = time.perf_counter()
 
 		time_p1 += (end - start)
@@ -86,13 +89,9 @@ def connect4(p1, p2, ui=True):
 		# Player2's Input
 		start = time.perf_counter()
 		if turn == board.PLAYER2_PIECE and not game_over:
-			col = p2.get_move(board)
-
-			if board.is_valid_location(col):
-				board.drop_piece(col, board.PLAYER2_PIECE)
-				moves_count_p2 += 1
-				next_turn()
-				game_over = check_win(board.PLAYER2_PIECE)
+			playerMove(p2, board.PLAYER2_PIECE)
+			next_turn()
+			game_over = check_win(board.PLAYER2_PIECE)
 		end = time.perf_counter()
 
 		time_p2 += (end - start)
