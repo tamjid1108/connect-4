@@ -9,13 +9,13 @@ class MonteCarloBot():
         self.piece = piece
         self.max_iterations = max_iterations
         self.timeout = timeout
-        self.currentNode = None
+        self.current_node = None
 
-    def montecarlo_tree_search(self, board, max_iterations, currentNode, timeout = 100):
+    def montecarlo_tree_search(self, board, max_iterations, current_node, timeout = 100):
         rootnode = Node(piece=board.PREV_PLAYER, board=board)
 
-        if currentNode is not None:
-            rootnode = currentNode
+        if current_node is not None:
+            rootnode = current_node
 
         start = time.perf_counter()
         for i in range(max_iterations):
@@ -62,14 +62,14 @@ class MonteCarloBot():
         return Node(piece = piece, board = board)
 
     def get_move(self, board):
-        if self.currentNode is None:
-            self.currentNode = Node(piece=self.piece, board=board)
+        if self.current_node is None:
+            self.current_node = Node(piece=self.piece, board=board)
         
         if board.PREV_MOVE is not None:
-            self.currentNode = self.get_child_node(self.currentNode, board, board.PREV_MOVE, board.CURR_PLAYER)
+            self.current_node = self.get_child_node(self.current_node, board, board.PREV_MOVE, board.CURR_PLAYER)
 
-        self.currentNode, col = self.montecarlo_tree_search(board, self.max_iterations, self.currentNode, self.timeout)
-        self.currentNode = self.get_child_node(self.currentNode, board, col, board.PREV_PLAYER)
+        self.current_node, col = self.montecarlo_tree_search(board, self.max_iterations, self.current_node, self.timeout)
+        self.current_node = self.get_child_node(self.current_node, board, col, board.PREV_PLAYER)
         return col
 
 class Node:

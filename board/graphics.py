@@ -61,10 +61,10 @@ class GBoard:
     def draw_circle(self, colour, params, radius):
         pygame.draw.circle(self.screen, colour, params, radius)
 
-    def write_on_board(self, text, color, posx, posy, fontsize, inCenter = False):
+    def write_on_board(self, text, color, posx, posy, fontsize, in_center = False):
         textfont = pygame.font.SysFont("segoeui", fontsize)
         text_surface = textfont.render(text, True, color)
-        if(inCenter):
+        if in_center:
             text_position = text_surface.get_rect(center = (posx, posy))
         else:
             text_position = text_surface.get_rect(topleft = (posx, posy))
