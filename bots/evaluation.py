@@ -21,7 +21,7 @@ class Evaluation:
 		max_score = 0
 		min_score = 0
 		
-		state = board.get_board()
+		state = board.get_state()
 		
 		# Check for vertical blocking sequences
 		for col in range(7):

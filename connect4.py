@@ -5,8 +5,7 @@ import sys
 import math
 import random
 import time
-from board import *
-from bots import *
+from board import Board, GBoard
 
 #pygame version number and welcome message hidden.
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
