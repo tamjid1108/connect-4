@@ -18,7 +18,7 @@ class MonteCarloBot():
             rootnode = current_node
 
         start = time.perf_counter()
-        for i in range(max_iterations):
+        for _ in range(max_iterations):
             node = rootnode
             state = board.copy_board()
 

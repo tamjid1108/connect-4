@@ -27,7 +27,7 @@ name_map = {
     'expectimax': 'ExpectiMax Bot',
     'montecarlo': 'Monte Carlo Tree Search Bot'
 }
-
+position = "button position"
 board = Board(1)
 
 def str2bool(v):
@@ -108,7 +108,6 @@ def main(first_player = None, second_player = None):
 def main_screen():
     pygame.init()
     pygame.display.set_caption("Connect Four | AI Project")
-    # board = Board(1)
     graphics_board = GBoard(board)
 
     def human_vs_human():
@@ -132,12 +131,12 @@ def main_screen():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     for button in button_list:
-                        if button['button position'].collidepoint(event.pos):
+                        if button[position].collidepoint(event.pos):
                             button['callback']()
             
             elif event.type == pygame.MOUSEMOTION:
                 for button in button_list:
-                    if button['button position'].collidepoint(event.pos):
+                    if button[position].collidepoint(event.pos):
                         button['color'] = graphics_board.RED
                     else:
                         button['color'] = graphics_board.WHITE
@@ -149,7 +148,6 @@ def main_screen():
 
 def bot_vs_human_screen():
     pygame.init()
-    # board = Board(1)
     graphics_board = GBoard(board)
 
     def human_vs_minimax():
@@ -181,12 +179,12 @@ def bot_vs_human_screen():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     for button in button_list:
-                        if button['button position'].collidepoint(event.pos):
+                        if button[position].collidepoint(event.pos):
                             button['callback']()
             
             elif event.type == pygame.MOUSEMOTION:
                 for button in button_list:
-                    if button['button position'].collidepoint(event.pos):
+                    if button[position].collidepoint(event.pos):
                         button['color'] = graphics_board.RED
                     else:
                         button['color'] = graphics_board.WHITE
@@ -198,7 +196,6 @@ def bot_vs_human_screen():
 
 def bot_vs_bot_screen():
     pygame.init()
-    # board = Board(1)
     graphics_board = GBoard(board)
 
     first_bot = second_bot = None
@@ -234,7 +231,7 @@ def bot_vs_bot_screen():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     for button in button_list:
-                        if button['button position'].collidepoint(event.pos):
+                        if button[position].collidepoint(event.pos):
                             if(button['args'] != None):
                                 button['callback'](button['args'])
                             else:
@@ -242,7 +239,7 @@ def bot_vs_bot_screen():
             
             elif event.type == pygame.MOUSEMOTION:
                 for button in button_list:
-                    if button['button position'].collidepoint(event.pos):
+                    if button[position].collidepoint(event.pos):
                         button['color'] = graphics_board.RED
                     else:
                         button['color'] = graphics_board.WHITE                
