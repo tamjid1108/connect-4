@@ -53,7 +53,7 @@ def check_win(piece):
 	return False
 
 
-def playerMove(p, piece):
+def player_move(p, piece):
 	col = p.get_move(board)
 	if board.is_valid_location(col):
 		board.drop_piece(col, piece)
