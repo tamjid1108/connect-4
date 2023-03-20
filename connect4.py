@@ -2,7 +2,6 @@ import numpy as np
 import os
 import pygame
 import sys
-import math
 import random
 import time
 from board import Board, GBoard
